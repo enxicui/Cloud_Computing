@@ -1,0 +1,12 @@
+{% extends "eventsapp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <h2>New event!</h2>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-outline-info save btn btn-default" type="submit">Create it!</button>
+    </form>
+    </div>
+{% endblock content %}

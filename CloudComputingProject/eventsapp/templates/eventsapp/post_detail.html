@@ -1,0 +1,43 @@
+{% extends "eventsapp/base.html" %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <span>Posted by: {{ object.user }}</span>
+      <small class="text-muted">Created on: {{ object.date_created|date:"Y-m-d H:i" }}</small>
+    </div>
+    <h2 class="article-title">{{ object.event_name }}</h2>
+
+      <p class="article-content">When: {{ object.event_date }}</p>
+      <p class="article-content">Description: {{ object.event_description }}</p>
+      <p class="article-content">Where: {{ object.location }}</p>
+
+          {% if object.user == user %}
+        <div>
+
+            <a class="btn btn-secondary" href="{% url 'post-update' object.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'post-delete' object.id %}">Delete?</a>
+          <br>
+          <hr>
+          <p>Share to people outside the website? They will need to sign up for the site to view the post fully.</p>
+          <br>
+
+<!--         Share code used and altered from: https://github.com/jebinphilipose/django-events-website-->
+
+             <div id="social-buttons">
+                    <div class="fb-share-button" data-href="{{ build_absolute_uri }}" data-layout="button" data-size="large" data-mobile-iframe="true">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                            class="fb-xfbml-parse-ignore">Share</a>
+                    </div>
+
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="{{ object.event_name }}"
+                        data-show-count="false">Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                </div>
+        </div>
+        {% endif %}
+  </div>
+
+</article>
+{% endblock content %}

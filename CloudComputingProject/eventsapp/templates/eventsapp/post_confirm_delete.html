@@ -1,0 +1,17 @@
+{% extends "eventsapp/base.html" %}
+{% block content %}
+<!--Structure from https://github.com/CoreyMSchafer/code_snippets/tree/master/Django_Blog-->
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Delete event</legend>
+                <h2>Really delete this event?</h2>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Delete?</button>
+                <a class="btn btn-outline-danger" href="{% url 'post-detail' object.id %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "eventsapp/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+    <h4>User Info</h4>
+    <h6>Contact Email: {{ user.email }}</h6>
+    </div>
+
+<!-- Structure from: https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p-->
+    <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile Information</legend>
+                {{ user_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update!</button>
+            </div>
+        </form>
+
+  </div>
+</article>
+{% endblock content %}

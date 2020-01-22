@@ -1,0 +1,19 @@
+{% extends "eventsapp/base.html" %}
+{% load time_templates %}
+{% block content %}
+    {% for post in posts %}
+<!-- Structure from https://github.com/CoreyMSchafer/code_snippets/tree/master/Django_Blog -->
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+    <span>Posted by: {{ post.user }}</span>
+      <small class="text-muted">Created on: {{ post.date_created|date:"Y-m-d H:i" }}</small>
+    </div>
+    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.event_name }}</a></h2>
+
+      <p class="article-content">When: {{ post.event_date }}</p>
+      <p class="article-content">Where: {{ post.location }}</p>
+  </div>
+</article>
+{% endfor %}
+{% endblock content %}
