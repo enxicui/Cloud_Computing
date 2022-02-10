@@ -11,7 +11,7 @@ backports.shutil-get-terminal-size==1.0.0
 bcrypt==3.1.7
 bkcharts==0.2
 bleach==3.1.0
-Django==2.2.7
+Django==2.2.27
 django-bootstrap-datepicker-plus==3.0.5
 django-crispy-forms==1.8.1
 django-jasmine==0.5.1
